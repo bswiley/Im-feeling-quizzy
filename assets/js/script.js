@@ -1,3 +1,4 @@
+
 var qna =[{
 Question:"Which of the following explains correctly what happens when a JavaScript program is developed on a Unix Machine?",  
 Answers: ["will work perfectly well on a Windows Machine","will be displayed as JavaScript text on the browser","will throw errors and exceptions","must be restricted to a Unix Machine only"],
