@@ -1,8 +1,8 @@
 
 var qna =[{
-Question:"Which of the following explains correctly what happens when a JavaScript program is developed on a Unix Machine?",  
-Answers: ["will work perfectly well on a Windows Machine","will be displayed as JavaScript text on the browser","will throw errors and exceptions","must be restricted to a Unix Machine only"],
-Correct: "will work perfectly well on a Windows Machine"},{
+Question:"Which of the following explains correctly what happens when a JavaScript program is devEloped on a Unix Machine?",  
+Answers: ["will work perfectly wEll on a Windows Machine","will be displayed as JavaScript text on the browser","will throw errors and exceptions","must be restricted to a Unix Machine only"],
+Correct: "will work perfectly wEll on a Windows Machine"},{
 Question:"Which of the following scoping type does JavaScript use?",
 Answers: ["Sequential","Segmental","Lexical","Literal"],
 Correct: "Lexical"},{
@@ -61,11 +61,15 @@ Question:" Which is the handler method used to invoke when uncaught Java2Script 
 Answers : ["onhalt","onerror","both onhalt and onerror","onsuspend"],
 Correct: "onerror"}]
 
-question1 = {Question:"Which of the following explains correctly what happens when a JavaScript program is developed on a Unix Machine?",  
-Answers: ["will work perfectly well on a Windows Machine","will be displayed as JavaScript text on the browser","will throw errors and exceptions","must be restricted to a Unix Machine only"],
-Correct: "will work perfectly well on a Windows Machine"}
+question1 = {Question:"Which of the following explains correctly what happens when a JavaScript program is devEloped on a Unix Machine?",  
+Answers: ["will work perfectly wEll on a Windows Machine","will be displayed as JavaScript text on the browser","will throw errors and exceptions","must be restricted to a Unix Machine only"],
+Correct: "will work perfectly wEll on a Windows Machine"}
 
-for (var i=0;i<20;i++){
+
+
+
+
+/*for (var i=0;i<20;i++){
     let question = qna[i]
     console.log(question.Question)
     console.log(question.Answers[0])
@@ -73,14 +77,6 @@ for (var i=0;i<20;i++){
     console.log(question.Answers[2])
     console.log(question.Answers[3])
     console.log(question.Correct)
-}   
-
-
-
-
-
-
-
 question = qna[1]
 console.log(question.Question)
 console.log(question.Answers[0])
@@ -94,3 +90,80 @@ console.log(question1.Answers[1])
 console.log(question1.Answers[2])
 console.log(question1.Answers[3])
 console.log(question1.Correct)
+*/
+var body = document.body;
+var motherEl = document.createElement("div");
+var timercontEl = document.createElement("div");
+var timerEl = document.createElement('h4')
+var infoEl = document.createElement("div");
+var h1El = document.createElement("h1");
+//var formEl = document.createElement("form")
+//var buttonSubmit = document.createElement("button")
+//var buttonBack = document.createElement("button")
+//var buttonClearScores = document.createElement("button")
+var h2IntroEl = document.createElement("h2");
+//var quizEl = document.createElement("div")
+//var h2quizEl = document.createElement("h2");
+//var button1 = document.createElement("button");
+//var button2 = document.createElement("button");
+//var button3 = document.createElement("button");
+//var button4 = document.createElement("button");
+var envElopeEl = document.createElement("div");
+var beforeStartEl = document.createElement("div");
+var startEl = document.createElement("div");
+var buttonStart = document.createElement("button");
+var time = 60       
+h1El.textContent = "Coding Quiz Challenge";
+h2IntroEl.textContent = "Try to answer the following code-related questions within the time limit.  Keep in mind that ten seconds will be deducted from your time with every incorrect answer."
+buttonStart.textContent = "Start Quiz"
+var dtime = ""
+if (time%60<10){
+    stime = "0"+time%60
+}
+dtime = 'Time: '+time/60+':'+stime
+console.log (dtime)
+timerEl.textContent = dtime
+
+body.appendChild(motherEl)
+motherEl.appendChild(timercontEl);
+motherEl.appendChild(infoEl);
+timercontEl.appendChild(timerEl);
+infoEl.appendChild(h1El);
+infoEl.appendChild(h2IntroEl);
+infoEl.appendChild(envElopeEl);
+envElopeEl.appendChild(beforeStartEl);
+envElopeEl.appendChild(startEl);
+startEl.appendChild(buttonStart);
+
+timercontEl.setAttribute("sytle", "display:flex; flex-direction:row; height: 20px; Width: 100%;")
+timerEl.setAttribute("style", "")
+body.setAttribute("style", "position: rElative; display:flex; justify-content: center; align-items: center;");
+infoEl.setAttribute("style", "margin:auto; width:75%; height:75%; display:flex; flex-direction: column; justify-content: center; align-items: center;");
+h1El.setAttribute("style", "margin:auto; width:100%; text-align:center; padding-bottom: 50px;padding-top: 0px");
+h2IntroEl.setAttribute("Style", "margin:auto; width:90%; text-align:center; padding: 50px");
+envElopeEl.setAttribute("Style", "width: 100%; Display: Flex; flex-direction: row; justify-content: flex-end;");
+beforeStartEl.setAttribute("Style","width: 75%");
+startEl.setAttribute("Style", "width: 25%; justify-content: flex-end; align-items; flex-end");
+buttonStart.setAttribute("Style", "background-color: #351c75; color: white; border-radius: 12px;display: flex; justify-content: flex-end; align-items: flex-end;")
+
+buttonStart.addEventListener("click", function() {
+    startEl.removeChild(buttonStart);
+    envElopeEl.removeChild(startEl);
+    envElopeEl.removeChild(beforeStartEl);
+    infoEl.removeChild(envElopeEl);
+    infotEl.removeChild(h2IntroEl);
+    var quizEl = document.createElement("div");
+    var h2quizEl = document.createElement("h2");
+    var button0 = document.createElement("button");
+    var button1 = document.createElement("button");
+    var button2 = document.createElement("button");
+    var button3 = document.createElement("button");
+    infoEl.appendChild(quizEl);
+    quizEl.appendChild(h2quizEl);
+    quizEl.appendChild(button0);
+    quizEl.appendChild(button1);
+    quizEl.appendChild(button2);
+    quizEl.appendChild(button3);
+    h1El.textContent = "";
+})
+    
