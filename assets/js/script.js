@@ -65,71 +65,61 @@ Correct: "onerror"}]
 var qna = questionArray;
 var question;
 var correctNum = 0;
-var time=60
+var time = 60
 var questionNum = -1
+var qna = questionArray
 
 //create the elements
 var body = document.body;
-var motherEl = document.getElementById(motherEl);
+var motherEl = document.getElementById('motherEl');
 var timerContainerEl = document.getElementById(timerContainerEl);
-var timerEl = document.getElementById(timerEl);
-var infoEl = document.getElementById(InfoEl);
+var timerEl = document.getElementById("timerEl");
+var infoEl = document.getElementById(infoEl);
 var h1El = document.getElementById(h1El);
 var h2IntroEl = document.getElementById(h2IntroEl);
-var quizDiv = document.getElementById(quizDiv);
-var button0 = document.getElementById(button0);
-var button1 = document.getElementById(button1);
-var button2 = document.getElementById(button2);
-var button3 = document.getElementById(button3);
+var quizDiv = document.getElementById("quizDiv");
+var button0 = document.getElementById('button0');
+var button1 = document.getElementById('button1');
+var button2 = document.getElementById("button2");
+var button3 = document.getElementById("button3");
 var envelopEl = document.getElementById(envelopEl);
 var beforeStartEl = document.getElementById(beforeStartEl);
 var startEl = document.getElementById(startEl);
-var buttonStart =document.getElementById(buttonStart)
+var buttonStart = document.getElementById("buttonStart")
 var cwDiv = document.getElementById(cwDiv);
 var horizontal = document.getElementById(horizontal);
 var cwEl = document.getElementById(cwEl);
 
 
-// place the elements and set their settings
-h1El.textContent = "Coding Quiz Challenge";
-h2IntroEl.textContent = "Try to answer the following code-related questions within the time limit.  Keep in mind that ten seconds will be deducted from your time with every incorrect answer."
-console.log (h2IntroEl)
-buttonStart.textContent = "Start Quiz"
-var dtime = ""
-
-qna = questionArray
-
-function buttonClicked(){
-h2IntroEl.textContent = "Try to answer the following code-related questions within the time limit.  Keep in mind that ten seconds will be deducted from your time with every incorrect answer."
-buttonStart.setAttribute("Style","visibility: hidden;");
-infoEl.setAttribute("style", "width: 100%:");
-quizDiv.setAttribute("sytle", "width: 50%;");
-quizDiv.appendChild(button0);
-quizDiv.appendChild(button1);
-quizDiv.appendChild(button2);
-quizDiv.appendChild(button3);
-start();
-}
-
-buttonStart.addEventListener("click", buttonClicked);
-
-
-
-
-
-function button0(){
+buttonStart.addEventListener("click", start);
     
-}
-start()
-//updates timer when called
-function displayTime(time){
-    if (time<=60){
-    if (time%60<10){
-        stime = "0"+time%60
-    }
-    }
-    dtime = 'Time: '+time/60+':'+stime
-    console.log (dtime)
-    timerEl.textContent = dtime
-    }
 
+function start(){
+    buttonStart.setAttribute("style","visibility:hidden");
+    startTime();
+    quizDiv.setAttribute("style","display:flex")
+}
+//updates timer when called
+function startTime(time){
+
+var timeInterval = setInterval(function () {
+    // As long as the `timeLeft` is greater than 1
+    if (time > 1) {
+        
+        // Set the `textContent` of `timerEl` to show the remaining seconds
+      timerEl.textContent = time + ' seconds remaining';
+      // Decrement `timeLeft` by 1
+      time--;
+    } else if (time === 1) {
+      // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
+      timerEl.textContent = time + ' second remaining';
+      time--;
+    } else {
+      // Once `timeLeft` gets to 0, set `timerEl` to an empty string
+      timerEl.textContent = '';
+      // Use `clearInterval()` to stop the timer
+      clearInterval(timeInterval);
+      // Call the `displayMessage()` function
+      }
+  }, 1000);
+}
