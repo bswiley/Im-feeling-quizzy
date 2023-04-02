@@ -70,23 +70,24 @@ var questionNum = -1
 
 //create the elements
 var body = document.body;
-var motherEl = document.createElement("div");
-var belowBottomEl = document.createElement("div");
-var timercontEl = document.createElement("div");
-var infoEl = document.createElement("div");
-var h1El = document.createElement("h1");
-var h2IntroEl = document.createElement("h2");
-var envElopeEl = document.createElement("div");
-var beforeStartEl = document.createElement("div");
-var startEl = document.createElement("div");
-var line = document.createElement("hr");
-var quizDiv = document.createElement("div")
-var button0 = document.createElement("button");
-var button1 = document.createElement("button");
-var button2 = document.createElement("button");
-var button3 = document.createElement("button");
-var timerEl = document.createElement('h4')
-var buttonStart = document.createElement("button");
+var motherEl = document.getElementById(motherEl);
+var timerContainerEl = document.getElementById(timerContainerEl);
+var timerEl = document.getElementById(timerEl);
+var infoEl = document.getElementById(InfoEl);
+var h1El = document.getElementById(h1El);
+var h2IntroEl = document.getElementById(h2IntroEl);
+var quizDiv = document.getElementById(quizDiv);
+var button0 = document.getElementById(button0);
+var button1 = document.getElementById(button1);
+var button2 = document.getElementById(button2);
+var button3 = document.getElementById(button3);
+var envelopEl = document.getElementById(envelopEl);
+var beforeStartEl = document.getElementById(beforeStartEl);
+var startEl = document.getElementById(startEl);
+var buttonStart =document.getElementById(buttonStart)
+var cwDiv = document.getElementById(cwDiv);
+var horizontal = document.getElementById(horizontal);
+var cwEl = document.getElementById(cwEl);
 
 
 // place the elements and set their settings
@@ -95,32 +96,6 @@ h2IntroEl.textContent = "Try to answer the following code-related questions with
 console.log (h2IntroEl)
 buttonStart.textContent = "Start Quiz"
 var dtime = ""
-body.appendChild(motherEl)
-motherEl.appendChild(timercontEl);
-motherEl.appendChild(infoEl);
-motherEl.appendChild(belowBottomEl);
-belowBottomEl.appendChild(line);
-timercontEl.appendChild(timerEl);
-infoEl.appendChild(h1El);
-infoEl.appendChild(h2IntroEl);
-infoEl.appendChild(quizDiv);
-infoEl.appendChild(envElopeEl);
-envElopeEl.appendChild(beforeStartEl);
-envElopeEl.appendChild(startEl);
-startEl.appendChild(buttonStart);
-quizDiv.setAttribute("class","quizDiv")
-quizDiv.setAttribute("Style","display: flex; flex-direction: column; align-content: flex-start; Justify-content: flex-start;")
-motherEl.setAttribute("style", "display:flex; flex-direction: column;")
-motherEl.setAttribute("class","mother")
-timercontEl.setAttribute("style", "display:flex; flex-direction:row; height: 20px; width: 100%;")
-timerEl.setAttribute("style", "width: 100%;")
-body.setAttribute("style", "position: relative; display:flex; justify-content: center; align-items: center;");
-infoEl.setAttribute("style", "margin:auto; width:75%; height:75%; display:flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;");
-h1El.setAttribute("style", "margin:auto; width:100%; text-align:center; padding-bottom: 50px;padding-top: 0px");
-h2IntroEl.setAttribute("Style", "margin:auto; width:90%; text-align:left; padding-top: 50px; padding-bottom: 5px;");
-envElopeEl.setAttribute("Style", "width: 100%; Display: Flex; flex-direction: row; justify-content: flex-end;");
-beforeStartEl.setAttribute("Style","width: 75%");
-startEl.setAttribute("Style", "width: 25%; justify-content: flex-end; align-items; flex-end");
 
 qna = questionArray
 
@@ -139,21 +114,8 @@ start();
 buttonStart.addEventListener("click", buttonClicked);
 
 
-function start() {
-for (let i=0; i<20; i++){
-console.log(i, time)
-var question = qna[i];
-h2IntroEl.textContent = question.Question;
-button0.textContent = question.Answers[0];
-button1.textContent = question.Answers[1];
-button2.textContent = question.Answers[2];
-button3.textContent = question.Answers[3];
 
-button0.addEventListener("click", function
-button1.addEventListener("click", function
-button2.addEventListener("click", function)
-button3.addEventListener("click", function)
-}
+
 
 function button0(){
     
@@ -170,3 +132,4 @@ function displayTime(time){
     console.log (dtime)
     timerEl.textContent = dtime
     }
+

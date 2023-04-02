@@ -3,26 +3,38 @@ body {
     font-family: arial, san-serif
 }
 
-.container {
-    margin: auto;
-    width: 75%;
-    border: 3px solid green;
-    padding: 10px;
-    display: grid;
+#motherEl, #infoEl{
+  display:flex;
+  flex-direction:column;
+}
+#quizDiv {
+  display:flex;
+  flex-direction:column;
+  padding-bottom: 40px;
+  margin-left: 40px;
+}
+#timerContainerEL {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start
+}
+#envelopEl {
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end}
 
+#beforeStartEl {
+  flex: 4;
+
+} 
+#startEl {
+ flex: 1;
+ align-self: flex-end;
 }
-.mother{
-    border:#4C43CD solid 1px;
-    min-width: 100%;
+#buttonStart {
+margin-left: 80%
 }
-.quizDiv {
-    max-width: 50%;
-    padding-bottom: 5px;
-    padding-left: 100px;
-}
-.wrapper {
-    display:grid;
-}
+
 h1 {
      font-family: arial,verdana,Ubuntu,sans-serif;
     text-align: center;
