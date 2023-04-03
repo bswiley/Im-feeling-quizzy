@@ -69,13 +69,13 @@ var time = 300
 var questionNum = 0
 var qna = questionArray
 var question = qna[questionNum]
-var questionCorrect = 0
+var questionCorrect = 15
 var questionNum = 0
 
 //create the elements
 var body = document.body;
 var motherEl = document.getElementById('motherEl');
-var timerContainerEl = document.getElementById(timerContainerEl);
+var timerContainerEl = document.getElementById("timerContainerEl");
 var timerEl = document.getElementById("timerEl");
 var infoEl = document.getElementById("infoEl");
 var h1El = document.getElementById("h1El");
@@ -85,6 +85,7 @@ var button0 = document.getElementById('button0');
 var button1 = document.getElementById('button1');
 var button2 = document.getElementById("button2");
 var button3 = document.getElementById("button3");
+var form = document.getElementById("form")
 var envelopEl = document.getElementById("envelopEl");
 var beforeStartEl = document.getElementById("beforeStartEl");
 var startEl = document.getElementById("startEl");
@@ -94,87 +95,48 @@ var horizontal = document.getElementById("horizontal");
 var cwEl = document.getElementById("cwEl");
 
 
-buttonStart.addEventListener("click", start);
+buttonStart.addEventListener("click", function(event){
+    noDefault(event);
+    start();
+})
+
+
+
+
+function noDefault(event){
+    event.preventDefault();
+}
+  
     
 
 function start(){
-    buttonStart.setAttribute("style","visibility:hidden");
-    startTime(time);
-    quizDiv.setAttribute("style","display:flex")
-    startQuiz(qna[questionNum]);
-}
-console.log("made it here1")  
-//updates timer when called
-function startTime(time){
-  console.log("made it here2"+time) 
-var timeInterval = setInterval(function () {
-  console.log("made it here3") 
-    // As long as the `timeLeft` is greater than 1
-    if (time > 1) {
-       
-        // Set the `textContent` of `timerEl` to show the remaining seconds
-      timerEl.textContent = time + ' seconds remaining';
-      // Decrement `timeLeft` by 1
-      console.log(time + "Seconds remaining 1")
-      time--;
-    } else if (time === 1) {
-      // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
-      timerEl.textContent = time + ' second remaining';
-      console.log(time + "Seconds remaining 2")
-      time--;
-    } else {
-      // Once `timeLeft` gets to 0, set `timerEl` to an empty string
-      timerEl.textContent = '';
-      // Use `clearInterval()` to stop the timer
-      clearInterval(timeInterval);
-      // Call the `displayMessage()` function
-      }
-  }, 1000);
-}
-function startQuiz(question){
-console.log (question);
-console.log(h2IntroEl.textContent)
-button0.textContent = question.Answers[0];
-button1.textContent = question.Answers[1];
-button2.textContent = question.Answers[2];
-button3.textContent = question.Answers[3];
-h2IntroEl.textContent = question.Question;
-questionNum++
-if (waitForClick(question)){
-  questionCorrect++
-}
-if (questionNum<20){
-  console.log(questionNum, questionCorrect)
-  start()
+quizDiv.setAttribute("style","display:flex;");
+console.log("hello1");
+button0.setAttribute("style","display:none;");
+console.log("hello2");
+button1.setAttribute("style","display:none;");
+console.log("hello3");
+button2.setAttribute("style","display:none;");
+console.log("hello4");
+button3.setAttribute("style","display:none;");
+console.log("hello5");
+buttonStart.innerHTML = "Save Score";
+console.log("hello6");
+form.setAttribute("style", "display: block;");
+console.log("hello7");
+h2IntroEl.textContent = "The quizz is over.  Congratulations, your score is "+ questionCorrect+"."
+score();
 }
 
+function score(){
+buttonStart.addEventListener("click", function(event){
+    event.preventDefault();
+var playerId = form.value
+console.log(playerId);
+var hiScores = {
+    id: playerId,
+    score: questionCorrect,
 }
-
-function waitForClick(question){
-  console.log("waiting for click?")
-quizDiv.addEventListener('click', (event)=>
-{  console.log("Still waiting?")
-event.preventDefault
-  console.log("Still waiting?")
-  console.log (event.target.id)
-  if (event.target.id = button0){
-    var answer = question.Answers[0];
-  }
-  else if (event.target.id = button1){
-    var answer = question.Answers[1];
-  }
-  else if (event.target.id = button2){
-    var answer = question.Answers[2]
-  }
-  else if (event.target.id = button3){
-    var answer = question.Answers[3]
-  }
-  if (answer === question.Correct){
-  console.log("Yay, I got it!");
-  return true;
-  }
-  else {
-    console.log("Return false")
-    return false;
-  }
-})}
+localStorage.setItem("hiScores", JSON.stringify(hiScores));
+cwEl.textContent = playerId+":"+ questionCorrect
+})};

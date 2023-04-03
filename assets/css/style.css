@@ -26,8 +26,11 @@ body {
 }
 #beforeStartEl {
   flex: 4;
-
 } 
+#form {
+  display: none;
+}
+
 #startEl {
  flex: 1;
  align-self: flex-end;
