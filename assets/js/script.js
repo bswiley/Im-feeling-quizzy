@@ -1,8 +1,8 @@
 //set up the variables
 var questionArray =[{
 Question:"1. Which of the following explains correctly what happens when a JavaScript program is developed on a Unix Machine?",  
-Answers: ["will work perfectly well on a Windows Machine","will be displayed as JavaScript text on the browser","will throw errors and exceptions","must be restricted to a Unix Machine only"],
-Correct: "will work perfectly well on a Windows Machine",
+Answers: ["It will work perfectly well on a Windows Machine","It will be displayed as JavaScript text on the browser","It will throw errors and exceptions","It must be restricted to a Unix Machine only"],
+Correct: "It will work perfectly well on a Windows Machine",
 button: "120px"},{
 Question:"2. Which of the following scoping type does JavaScript use?",
 Answers: ["Sequential","Segmental","Lexical","Literal"],
@@ -25,7 +25,7 @@ Correct: "Class, prototype, object's extensible flag"},{
 Question:"8. Which of the following methods/operation does javascript use instead of == and !=?",
 Answers : ["JavaScript uses equalto()","JavaScript uses equals() and notequals() instead","JavaScript uses bitwise checking","JavaScript uses === and !== instead"],
 Correct: "JavaScript uses === and !== instead"},{
-Question:"9. Why event handlers is needed in JS?",
+Question:"9. Why are event handlers is needed in JS?",
 Answers : ["Allows JavaScript code to alter the behaviour of windows"," Adds innerHTML page to the code","Change the server location","Performs handling of exceptions and occurrences"],
 Correct: "Allows JavaScript code to alter the behaviour of windows"},{
 Question:"10. Which of the following is not a framework?",
@@ -68,7 +68,7 @@ var correctNum = 0;
 var time = 300
 var questionNum = 0
 var qna = questionArray
-var question = qna[questionNum]
+//var question = qna[questionNum]
 var questionCorrect = 0
 var questionNum = 0
 
@@ -95,32 +95,32 @@ var cwEl = document.getElementById("cwEl");
 
 
 buttonStart.addEventListener("click", start);
+console.log ("pushed")
     
 
 function start(){
     buttonStart.setAttribute("style","visibility:hidden");
+    console.log ("pushed")
     startTime(time);
     quizDiv.setAttribute("style","display:flex")
-    startQuiz(qna[questionNum]);
+  //  startQuiz();
 }
 console.log("made it here1")  
 //updates timer when called
 function startTime(time){
-  console.log("made it here2"+time) 
+
 var timeInterval = setInterval(function () {
-  console.log("made it here3") 
+
     // As long as the `timeLeft` is greater than 1
     if (time > 1) {
        
         // Set the `textContent` of `timerEl` to show the remaining seconds
       timerEl.textContent = time + ' seconds remaining';
       // Decrement `timeLeft` by 1
-      console.log(time + "Seconds remaining 1")
       time--;
     } else if (time === 1) {
       // When `timeLeft` is equal to 1, rename to 'second' instead of 'seconds'
       timerEl.textContent = time + ' second remaining';
-      console.log(time + "Seconds remaining 2")
       time--;
     } else {
       // Once `timeLeft` gets to 0, set `timerEl` to an empty string
@@ -131,7 +131,8 @@ var timeInterval = setInterval(function () {
       }
   }, 1000);
 }
-function startQuiz(question){
+//function startQuiz(){
+question = qna[questionNum]
 console.log (question);
 console.log(h2IntroEl.textContent)
 button0.textContent = question.Answers[0];
@@ -140,41 +141,52 @@ button2.textContent = question.Answers[2];
 button3.textContent = question.Answers[3];
 h2IntroEl.textContent = question.Question;
 questionNum++
-if (waitForClick(question)){
-  questionCorrect++
-}
+/*if (waitForClick(question)){
+  questionCorrect++ */
 if (questionNum<20){
   console.log(questionNum, questionCorrect)
-  start()
-}
+ }
+//}
 
-}
 
-function waitForClick(question){
-  console.log("waiting for click?")
-quizDiv.addEventListener('click', (event)=>
-{  console.log("Still waiting?")
+
+quizDiv.addEventListener('click', function (event){
 event.preventDefault
-  console.log("Still waiting?")
-  console.log (event.target.id)
-  if (event.target.id = button0){
-    var answer = question.Answers[0];
+var answer;
+var pushed = (event.target.getAttribute('id')); console.log(pushed);
+ console.log(event.target.getAttribute('id'))
+    if (pushed == "button3"){
+     answer = question.Answers[3];
+    console.log ("button3")
   }
-  else if (event.target.id = button1){
-    var answer = question.Answers[1];
+  else if (pushed == "button2"){
+    answer = question.Answers[2];
+    console.log ("button2")
   }
-  else if (event.target.id = button2){
-    var answer = question.Answers[2]
+  else if (pushed == "button1"){
+    answer = question.Answers[1]
+    console.log ("button1")
   }
-  else if (event.target.id = button3){
-    var answer = question.Answers[3]
+  else if (pushed == button3){
+    answer = question.Answers[0]
+    console.log ("button0")
   }
-  if (answer === question.Correct){
-  console.log("Yay, I got it!");
-  return true;
+  console.log(question.Answers[0], answer, question.Correct)
+  if (answer == question.Correct){
+  questionCorrect++
+  console.log(event.target.id + "Yay, I got it!" + questionCorrect , questionNum);
   }
   else {
-    console.log("Return false")
-    return false;
-  }
-})}
+  time=time-10
+  console.log(event.target.id + "Return false" + time , questionNum)  
+}
+
+question = qna[questionNum]
+button0.textContent = question.Answers[0];
+button1.textContent = question.Answers[1];
+button2.textContent = question.Answers[2];
+button3.textContent = question.Answers[3];
+h2IntroEl.textContent = question.Question;
+questionNum++
+})
+
